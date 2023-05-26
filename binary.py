@@ -1,12 +1,19 @@
-n = int(input("Enter the number of elements in the array: "))
-arr = list(map(int, input("Enter the elements in the array: ").split()))
-min_ind = 0
-for i in range(n-1):
-    min_ind = i
-    for j in range(i+1, n):
-        if(arr[j] < arr[min_ind]):
-            min_ind = j
+n = int(input("Enter the size of the array: "))
+arr = list(map(int, input("Enter the array elements: ").split()))
+target = int(input("Enter the target element: "))
+start = 0
+end = n-1
+mid = (start+end)//2
+
+while(start <= end):
+    mid = (start+end)//2
+    if(arr[mid] == target):
+        print("Element found at index ", mid)
+        break
+    elif(arr[mid] > target):
+        end = mid - 1
+    else:
+        start = mid + 1
     
-        arr[i],arr[min_ind] = arr[min_ind], arr[i]
-print("Sorted array is:")
-print(arr)
+else:
+    print("Element not found")
